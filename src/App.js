@@ -52,6 +52,7 @@ const App = () => {
             // console.log('Found an authorized account:', account);
             setCurrentAccount(account);
 
+            queryNumberOfToken();
             setupEventListener();
         } // else {
         // console.log('No authorized account found');
@@ -72,6 +73,7 @@ const App = () => {
             // console.log('Connected', accounts[0]);
             setCurrentAccount(accounts[0]);
 
+            queryNumberOfToken();
             setupEventListener();
         } catch (error) {
             console.log(error);
@@ -181,8 +183,15 @@ const App = () => {
                             Each unique. Each beautiful. Discover your NFT today.
                         </p>
                         <p className="sub-text">
-                            {numberOfToken} / {TOTAL_MINT_COUNT} NFT Minted
+                            {currentAccount
+                                ? numberOfToken + ' / ' + TOTAL_MINT_COUNT + ' NFT Minted'
+                                : '? / ' + TOTAL_MINT_COUNT + ' NFT Minted'}
                         </p>
+                        {!currentAccount && (
+                            <p className="sub-sub-text">
+                                You must be connected to see the number of minted NFT
+                            </p>
+                        )}
                         {currentAccount === '' ? renderNotConnectedContainer() : renderMintUI()}
                     </div>
                     <div className="footer-container">

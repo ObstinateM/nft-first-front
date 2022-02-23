@@ -28,6 +28,11 @@
   color: white;
 }
 
+.sub-sub-text {
+  font-size: 15px;
+  color: white;
+}
+
 .gradient-text {
   background: -webkit-linear-gradient(left, #60c657 30%, #35aee2 60%);
   background-clip: text;
